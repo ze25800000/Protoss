@@ -10,7 +10,6 @@ Page({
         var data = home.getBannerData(id, (res) => {
             console.log(res);
         });
-
     }
 
 });

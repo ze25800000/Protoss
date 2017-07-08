@@ -1,11 +1,11 @@
 import {Config} from 'config';
 class Base {
     constructor() {
-        this.baseRequestUrl = 'http://yz.com/api/v1';
+
     }
 
     request(params) {
-        var url = this.baseRequestUrl + Config.restUrl;
+        var url = Config.restUrl + params.url;
         if (!params.type) {
             params.type = 'GET';
         }
@@ -18,7 +18,7 @@ class Base {
                 'token'       : wx.getStorageSync('token')
             },
             success: res => {
-                params.sCallBack && params.sCallBack(res);
+                params.sCallBack && params.sCallBack(res.data);
             },
             fail   : err => {
                 console.log(err);
@@ -26,3 +26,4 @@ class Base {
         })
     }
 }
+export {Base};
