@@ -6,14 +6,17 @@ Page({
         this._loadData();
     },
     _loadData(){
-        var id   = 1;
-        var data = home.getBannerData(id, (res) => {
-            console.log(res);
+        var id = 1;
+        home.getBannerData(id, res => {
             //数据绑定
             this.setData({
                 'bannerArr': res
             });
         });
+        home.getThemeData((res) => {
+            this.setData({
+                'themeArr': res
+            })
+        });
     }
-
 });

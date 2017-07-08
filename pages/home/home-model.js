@@ -4,11 +4,21 @@ class Home extends Base {
         super()
     }
 
-    getBannerData(id, callBack) {
-        var params = {
+    getBannerData(id, callback) {
+        let params = {
             url      : 'banner/' + id,
-            sCallBack: res => {
-                callBack && callBack(res.items);
+            sCallback: res => {
+                callback && callback(res.items);
+            }
+        };
+        this.request(params);
+    }
+
+    getThemeData(callback) {
+        let params = {
+            url      : 'theme?ids=1,2,3',
+            sCallback: res => {
+                callback && callback(res);
             }
         };
         this.request(params);
