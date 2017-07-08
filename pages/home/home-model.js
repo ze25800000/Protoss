@@ -3,12 +3,12 @@ class Home {
 
     }
 
-    getBannerData(id) {
+    getBannerData(id,callBack) {
         wx.request({
             url: "http://yz.com/api/v1/banner/" + id,
             method: 'GET',
             success: res => {
-                console.log(res.data);
+                callBack(res);
             }
         })
     }
