@@ -20,11 +20,11 @@
   right:12px;
   width: 80rpx;
 }
-.fiexd-cart image{
+.fixed-cart image{
   height: 64rpx;
   width: 64rpx;
 }
-.fiexd-cart view{
+.fixed-cart view{
   font-size: 24rpx;
   background-color: #AB956D;
   color: white;
@@ -37,7 +37,7 @@
   border-radius: 36rpx;
   text-align: center;
 }
-.fiexd-cart.animate{
+.fixed-cart.animate{
   animation: aCartScale 200ms cubic-bezier(.17,.67,.83,.67);
   animation-fill-mode: backwards;
 }
