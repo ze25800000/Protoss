@@ -14,9 +14,14 @@ Page({
             });
         });
         home.getThemeData((res) => {
-            console.log(res);
             this.setData({
                 'themeArr': res
+            })
+        });
+        home.getProductsData((res) => {
+            console.log(res);
+            this.setData({
+                productsArr: res
             })
         });
     }

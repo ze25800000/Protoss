@@ -23,5 +23,15 @@ class Home extends Base {
         };
         this.request(params);
     }
+
+    getProductsData(callback) {
+        let params = {
+            url      : 'product/recent',
+            sCallback: res => {
+                callback && callback(res);
+            }
+        };
+        this.request(params);
+    }
 }
 export {Home};
