@@ -3,9 +3,10 @@ var product = new Product();
 Page({
 
     data: {
-        id           : null,
-        countsArray  : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        productCounts: 1
+        id              : null,
+        countsArray     : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        productCounts   : 1,
+        currentTabsIndex: 0
     },
 
     onLoad          : function (options) {
@@ -26,6 +27,12 @@ Page({
         var selectedCount = this.data.countsArray[index];
         this.setData({
             productCounts: selectedCount
+        })
+    },
+    onTabsItemTap   : function (event) {
+        var index = product.getDataSet(event, 'index');
+        this.setData({
+            currentTabsIndex: index
         })
     }
 });
