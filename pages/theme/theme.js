@@ -9,6 +9,11 @@ Page({
         this.data.name = options.name;
         this._loadData();
     },
+    onReady  : function () {
+        wx.setNavigationBarTitle({
+            title: this.data.name
+        });
+    },
     _loadData: function () {
         theme.getProductsData(this.data.id, data => {
             console.log(data);
