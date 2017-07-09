@@ -1,5 +1,6 @@
 import {Home} from 'home-model';
-var home = new Home();
+import {Base} from '../../utils/base';
+let home = new Home();
 Page({
     data             : {},
     onLoad(){
@@ -19,16 +20,30 @@ Page({
             })
         });
         home.getProductsData((res) => {
-            console.log(res);
             this.setData({
                 productsArr: res
             })
         });
     },
+    /**
+     * 点击商品跳转到商品详细页面
+     * @param event
+     */
     onProductsItemTap: event => {
-        var id = null;
+        var id = home.getDataSet(event, 'id');
         wx.navigateTo({
-            url: '../product/product?id' + id
+            url: '../product/product?id=' + id
+        })
+    },
+    /**
+     * 点击专题跳转到专题详细页面
+     * @param event
+     */
+    onThemeItemTap   : event => {
+        var id = home.getDataSet(event, 'id');
+        var name = home.getDataSet(event, 'name');
+        wx.navigateTo({
+            url: '../theme/theme?id=' + id + '&name=' + name
         })
     }
 });
