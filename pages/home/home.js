@@ -1,7 +1,7 @@
 import {Home} from 'home-model';
 var home = new Home();
 Page({
-    data: {},
+    data             : {},
     onLoad(){
         this._loadData();
     },
@@ -24,5 +24,11 @@ Page({
                 productsArr: res
             })
         });
+    },
+    onProductsItemTap: event => {
+        var id = null;
+        wx.navigateTo({
+            url: '../product/product?id' + id
+        })
     }
 });
