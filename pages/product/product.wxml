@@ -46,9 +46,22 @@
             </block>
         </view>
         <view class="product-detail-box">
-            <view hidden="{{currentTabsIndex!=0}}">detail</view>
-            <view hidden="{{currentTabsIndex!=1}}">param</view>
-            <view hidden="{{currentTabsIndex!=2}}">sale</view>
+            <view class="product-detail-imgs" hidden="{{currentTabsIndex!=0}}">
+                <block wx:for="{{product.imgs}}">
+                    <image src="{{item.img_url.url}}" mode="aspectFill"></image>
+                </block>
+            </view>
+            <view class="product-detail-properties" hidden="{{currentTabsIndex!=1}}">
+                <block wx:for="{{product.properties}}">
+                    <view class="properties-item">
+                        <view class="properties-name">{{item.name}}</view>
+                        <view class="properties-detail">{{item.detail}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="product-detail-protect" hidden="{{currentTabsIndex!=2}}">
+                <view>七天无理由退货</view>
+            </view>
         </view>
     </view>
 </view>
