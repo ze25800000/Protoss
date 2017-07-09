@@ -14,6 +14,7 @@ Page({
             });
         });
         home.getThemeData((res) => {
+            console.log(res);
             this.setData({
                 'themeArr': res
             })
