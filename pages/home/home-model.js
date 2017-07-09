@@ -26,7 +26,7 @@ class Home extends Base {
 
     getProductsData(callback) {
         let params = {
-            url      : 'product/recent',
+            url      : 'product/recent?count=14',
             sCallback: res => {
                 callback && callback(res);
             }

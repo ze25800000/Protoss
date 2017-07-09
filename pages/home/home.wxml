@@ -1,5 +1,5 @@
 <import src="../tpls/products/products-tpl.wxml"/>
-<view>
+<view class="container">
     <swiper indicator-dots="true" autoplay="true" class="swiper">
         <block wx:for="{{bannerArr}}" wx:key>
             <swiper-item class="banner-item">
