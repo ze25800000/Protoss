@@ -8,10 +8,19 @@ Page({
         this._loadData();
     },
     _loadData: function () {
-        category.getCategoryType(data => {
-            console.log(data);
+        category.getCategoryType(categoryData => {
             this.setData({
-                categoryTypeArr: data
+                categoryTypeArr: categoryData
+            });
+            category.getProductsByCategory(categoryData[0].id, data => {
+                var dataObj = {
+                    products : data,
+                    topImgUrl: categoryData[0].img.url,
+                    title    : categoryData[0].name
+                };
+                this.setData({
+                    categoryProducts: dataObj
+                });
             });
         });
     }
