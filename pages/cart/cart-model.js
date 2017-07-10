@@ -17,7 +17,7 @@ class Cart extends Base {
         var cartData  = this.getCartDataFromLocal();
         var isHasInfo = this._isHasThatOne(item.id, cartData);
         if (isHasInfo.index == -1) {
-            item.count        = counts;
+            item.counts       = counts;
             item.selectStatus = true; //设置选中状态
             cartData.push(item);
         } else {
@@ -36,6 +36,19 @@ class Cart extends Base {
             res = [];
         }
         return res;
+    }
+
+    /**
+     * 计算购物车内商品总数
+     * @returns {number}
+     */
+    getCartTotalCounts() {
+        var data   = this.getCartDataFromLocal();
+        var counts = 0;
+        for (var i = 0; i < data.length; i++) {
+            counts += data[i].counts;
+        }
+        return counts;
     }
 
     /**

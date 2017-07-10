@@ -1,4 +1,6 @@
 import {Product} from 'product-model';
+import {Cart} from '../cart/cart-model';
+var cart    = new Cart();
 var product = new Product();
 Page({
 
@@ -18,7 +20,8 @@ Page({
         product.getDetailInfo(this.data.id, data => {
             console.log(data);
             this.setData({
-                product: data
+                cartTotalCounts: cart.getCartTotalCounts(),
+                product        : data
             });
         });
     },
@@ -34,5 +37,18 @@ Page({
         this.setData({
             currentTabsIndex: index
         })
+    },
+    onAddingToCartTap(){
+        this.addToCart();
+    },
+    addToCart(){
+        var temObj = {};
+        var keys   = ['id', 'name', 'main_img_url', 'price'];
+        for (var key in this.data.product) {
+            if (keys.indexOf(key) >= 0) {
+                temObj[key] = this.data.product[key];
+            }
+        }
+        cart.add(temObj, this.data.productCounts);
     }
 });
