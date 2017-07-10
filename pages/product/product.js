@@ -8,7 +8,8 @@ Page({
         id              : null,
         countsArray     : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         productCounts   : 1,
-        currentTabsIndex: 0
+        currentTabsIndex: 0,
+        cartTotalCount  : 0
     },
 
     onLoad          : function (options) {
@@ -40,6 +41,10 @@ Page({
     },
     onAddingToCartTap(){
         this.addToCart();
+        // var counts = this.data.cartTotalCount + this.data.productCounts;
+        this.setData({
+            cartTotalCounts: cart.getCartTotalCounts(),
+        });
     },
     addToCart(){
         var temObj = {};
