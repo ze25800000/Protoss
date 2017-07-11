@@ -74,12 +74,38 @@ class Cart extends Base {
             if (item.id == id) {
                 result = {
                     index: i,
-                    data : item
+                    data: item
                 };
                 break;
             }
         }
         return result;
+    }
+
+    /**
+     * 修改商品数目
+     * @param id 商品id
+     * @param counts 数目
+     * @private
+     */
+    _changeCounts(id, counts) {
+        var cartData = this.getCartDataFromLocal(),
+            hasInfo  = this._isHasThatOne(id, cartData);
+        if (hasInfo.index != -1) {
+            if (hasInfo.data.counts > 1) {
+                cartData[hasInfo.index].counts += counts;
+            }
+        }
+        //更新本地缓存
+        wx.setStorageSync(this._storageKeyName, cartData);
+    }
+
+    addCounts(id) {
+        this._changeCounts(id, 1);
+    }
+
+    cutCounts(id) {
+        this._changeCounts(id, -1);
     }
 }
 export {Cart};
