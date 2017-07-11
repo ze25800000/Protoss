@@ -100,12 +100,39 @@ class Cart extends Base {
         wx.setStorageSync(this._storageKeyName, cartData);
     }
 
+    /**
+     * 增加商品数目
+     * @param id
+     */
     addCounts(id) {
         this._changeCounts(id, 1);
     }
 
+    /**
+     * 减少商品数目
+     * @param id
+     */
     cutCounts(id) {
         this._changeCounts(id, -1);
+    }
+
+    /**
+     * 删除商品
+     * @param ids
+     */
+    delete(ids) {
+        if (!(ids instanceof Array)) {
+            ids = [ids];
+        }
+        var cartData = this.getCartDataFromLocal();
+        for (var i = 0; i < ids.length; i++) {
+            var hasInfo = this._isHasThatOne(ids[i], cartData);
+            if (hasInfo.index != -1) {
+                //删除数组中的一项
+                cartData.splice(hasInfo.index, 1);
+            }
+        }
+        wx.setStorageSync(this._storageKeyName, cartData);
     }
 }
 export {Cart};

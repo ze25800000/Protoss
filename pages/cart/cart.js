@@ -97,5 +97,12 @@ Page({
         }
         this.data.cartData[index].counts += counts;
         this._resetCartData();
+    },
+    delete(event){
+        var id    = cart.getDataSet(event, 'id'),
+            index = this._getProductIndexById(id);
+        this.data.cartData.splice(index, 1);
+        this._resetCartData();
+        cart.delete(id);
     }
 });
