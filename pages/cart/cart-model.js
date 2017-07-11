@@ -40,13 +40,20 @@ class Cart extends Base {
 
     /**
      * 计算购物车内商品总数
+     * @param flag
      * @returns {number}
      */
-    getCartTotalCounts() {
+    getCartTotalCounts(flag) {
         var data   = this.getCartDataFromLocal();
         var counts = 0;
         for (var i = 0; i < data.length; i++) {
-            counts += data[i].counts;
+            if (flag) {
+                if (data[i].selectStatus) {
+                    counts += data[i].counts;
+                }
+            } else {
+                counts += data[i].counts;
+            }
         }
         return counts;
     }
