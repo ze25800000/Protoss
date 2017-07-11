@@ -11,10 +11,12 @@ Page({
 
     },
     onShow: function () {
-        var cartData   = cart.getCartDataFromLocal();
-        var countsInfo = cart.getCartTotalCounts(true);
+        var cartData = cart.getCartDataFromLocal();
+        var cal      = this._calcTotalAccountAndCounts(cartData);
         this.setData({
-            selectedCount: countsInfo,
+            selectedCount: cal.selectedCounts,
+            selectedTypeCounts: cal.selectedTypeCounts,
+            account: cal.account,
             cartData: cartData
         })
     },
