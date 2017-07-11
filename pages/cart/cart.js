@@ -62,7 +62,12 @@ Page({
         this._resetCartData();
     },
     toggleSelectAll(event){
-
+        var status = cart.getDataSet(event, 'status') == 'true';
+        var data   = this.data.cartData;
+        for (let i = 0; i < data.length; i++) {
+            data[i].selectStatus = !status;
+        }
+        this._resetCartData();
     },
     /**
      * 根据商品id获取商品数组所在下标
