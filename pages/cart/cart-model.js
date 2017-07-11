@@ -6,6 +6,14 @@ class Cart extends Base {
     }
 
     /**
+     * 公共更新缓存
+     * @param data
+     */
+    execSetStorageSync(data) {
+        wx.setStorageSync(this._storageKeyName, data);
+    }
+
+    /**
      * 加入到购物车
      * 如果之前没有样的商品，则直接添加一条新的记录， 数量为 counts
      * 如果有，则只将相应数量 + counts

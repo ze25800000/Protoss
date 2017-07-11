@@ -20,6 +20,9 @@ Page({
             cartData: cartData
         })
     },
+    onHide(){
+        cart.execSetStorageSync(this.data.cartData);
+    },
     _calcTotalAccountAndCounts: function (data) {
         var len                = data.length,
             //需要计算的总价格，排除未选中的商品
