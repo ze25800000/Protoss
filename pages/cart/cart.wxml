@@ -4,7 +4,10 @@
             <block wx:for="{{cartData}}">
                 <view class="cart-item">
                     <view class="cart-item-main">
-                        <view class="cart-item-checkbox">
+                        <view class="cart-item-checkbox"
+                              ontap="toggleSelect"
+                              data-status="{{item.selectStatus}}"
+                              data-id="{{item.id}}">
                             <image wx:if="{{item.selectStatus}}" src="../../imgs/icon/circle@selected.png"></image>
                             <image wx:else src="../../imgs/icon/circle@noselected.png"></image>
                         </view>
@@ -30,11 +33,12 @@
             </block>
         </view>
         <view class="footer-account-box all-accounts-box">
-            <view class="all-select" ontap="toggleSelectAll" data-status="{{selectedTypeCounts==cartData.length?'true':'false'}}">
+            <view class="all-select" ontap="toggleSelectAll"
+                  data-status="{{selectedTypeCounts==cartData.length?'true':'false'}}">
                 <image wx:if="{{selectedTypeCounts==cartData.length}}"
                        class="title-icon" src="../../imgs/icon/all@selected.png"></image>
                 <image wx:else class="title-icon" src="../../imgs/icon/all.png"></image>
-                <text>全选({{selectedCount}})</text>
+                <text>全选({{selectedCounts}})</text>
             </view>
             <view class="all-price-submit {{account==0?'disabled':''}}" bindtap="submitOrder">
                 <view class="accounts-btn">下单</view>
