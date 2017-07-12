@@ -1,5 +1,9 @@
 import {Cart} from '../cart/cart-model';
-let cart = new Cart();
+// import {Order} from '../order/order-model';
+import {Address} from '../../utils/address';
+let cart    = new Cart();
+// let order   = new Order();
+let address = new Address();
 Page({
 
     /**
@@ -21,7 +25,30 @@ Page({
             orderStatus: 0
         });
     },
-
+    editAddress(event){
+        let that = this;
+        wx.chooseAddress({
+            success(res){
+                console.log(res);
+                let addressInfo = {
+                    name: res.userName,
+                    mobile: res.telNumber,
+                    totalDetail: address.setAddressInfo(res)
+                };
+                that._bindAddressInfo(addressInfo);
+            }
+        });
+    },
+    /**
+     * 绑定地址信息
+     * @param addressInfo
+     * @private
+     */
+    _bindAddressInfo(addressInfo){
+        this.setData({
+            addressInfo
+        });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
