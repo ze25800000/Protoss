@@ -18,7 +18,7 @@ Page({
             selectedTypeCounts: cal.selectedTypeCounts,
             account: cal.account,
             cartData: cartData
-        })
+        });
     },
     onHide(){
         cart.execSetStorageSync(this.data.cartData);
@@ -107,5 +107,10 @@ Page({
         this.data.cartData.splice(index, 1);
         this._resetCartData();
         cart.delete(id);
+    },
+    submitOrder(event){
+        wx.navigateTo({
+            url: '../order/order?account=' + this.data.account + '&from=cart'
+        });
     }
 });

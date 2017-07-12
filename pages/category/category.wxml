@@ -2,7 +2,7 @@
 <view class="container category-container">
     <view class="category-box">
         <view class="left-box">
-            <block wx:for="{{categoryTypeArr}}">
+            <block wx:for="{{categoryTypeArr}}" wx:key>
                 <view class="menu-item">
                     {{item.name}}
                 </view>
