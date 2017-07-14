@@ -49,7 +49,7 @@ class Address extends Base {
                 callback && callback(true, res);
             },
             eCallback: res => {
-                callback && callback(true, res);
+                callback && callback(false, res);
             }
         };
         this.request(param);
