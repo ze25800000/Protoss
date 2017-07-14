@@ -13,7 +13,7 @@ class Address extends Base {
     setAddressInfo(res) {
         let province = res.provinceName || res.province,
             city     = res.cityName || res.city,
-            country  = res.countyName || res.country,
+            country  = res.countyName || res.county,
             detail   = res.detailInfo || res.detail;
 
         let totalDetail = city + country + detail;
@@ -60,7 +60,7 @@ class Address extends Base {
             name: res.userName,
             province: res.provinceName,
             city: res.cityName,
-            country: res.countryName,
+            country: res.countyName,
             mobile: res.telNumber,
             detail: res.detailInfo
         };
