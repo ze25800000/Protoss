@@ -36,8 +36,32 @@ Page({
                     totalDetail: address.setAddressInfo(res)
                 };
                 that._bindAddressInfo(addressInfo);
+                address.submitAddress(res, flag => {
+                    if (!flag) {
+                        that.showTips('操作提示', '地址信息更新失败');
+                    }
+                });
             }
         });
+    },
+    /**
+     * 提示窗口
+     * @param title  标题
+     * @param content 内容
+     * @param flag bool 是否跳转到‘我的页面’
+     */
+    showTips(title, content, flag){
+        wx.showModal({
+            title: title,
+            content: content,
+            success: res => {
+                if (flag) {
+                    wx.switchTab({
+                        url: '/pages/my/my'
+                    });
+                }
+            }
+        })
     },
     /**
      * 绑定地址信息
