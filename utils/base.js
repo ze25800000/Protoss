@@ -9,7 +9,7 @@ class Base {
      * 小程序发送请求
      * @param params
      */
-    request(params) {
+    request(params, noRefetch) {
         var url  = Config.restUrl + params.url;
         var that = this;
         if (!params.type) {
@@ -30,7 +30,9 @@ class Base {
                     params.sCallback && params.sCallback(res.data);
                 } else {
                     if (code == '401') {
-                        that._refetch(params);
+                        if (!noRefetch) {
+                            that._refetch(params);
+                        }
                     }
                     params.sCallback && params.sCallback(res.data);
                 }
@@ -45,7 +47,7 @@ class Base {
     _refetch(params) {
         let token = new Token();
         token.getTokenFromService(token => {
-            this.request(params);
+            this.request(params, true);
         });
     }
 
